@@ -1,73 +1,56 @@
-# Welcome to your Lovable project
+# ESG Navigator
 
-## Project info
+Enterprise SaaS platform for ESG (Environmental, Social, Governance) intelligence and sustainability reporting.
 
-**URL**: https://lovable.dev/projects/4cdd4f40-1bbf-4d4e-97dd-741a760dd16a
+## Architecture
 
-## How can I edit this code?
+This repository follows a microservices architecture:
 
-There are several ways of editing your application.
+- `frontend/` - Next.js web application
+- `backend/` - Python FastAPI microservices
+- `workers/` - Celery workers for background tasks
+- `infrastructure/` - Docker and Kubernetes configurations
+- `scripts/` - Utility scripts
+- `docs/` - Documentation
 
-**Use Lovable**
+## Development
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4cdd4f40-1bbf-4d4e-97dd-741a760dd16a) and start prompting.
+### Frontend
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+cd frontend
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Backend
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
 
-**Use GitHub Codespaces**
+## Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+See infrastructure/ directory for Docker and Kubernetes configurations.
 
-## What technologies are used for this project?
+## Target Scale
 
-This project is built with:
+- 10,000+ organizations
+- 100,000+ facilities
+- 500,000+ users
+- 100M+ activity records
+- 50k+ reports per day
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Technologies
 
-## How can I deploy this project?
+- Frontend: Next.js, TypeScript, Tailwind CSS
+- Backend: Python, FastAPI, SQLAlchemy
+- Database: PostgreSQL
+- Workers: Celery, Redis
+- Infrastructure: Docker, Kubernetes, AWS
 
-Simply open [Lovable](https://lovable.dev/projects/4cdd4f40-1bbf-4d4e-97dd-741a760dd16a) and click on Share -> Publish.
+## Contributing
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+See docs/ for detailed development guidelines.

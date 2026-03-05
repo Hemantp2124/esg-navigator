@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      String   @default("user") // admin, editor, viewer
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  emissions Emission[]
+  reports   Report[]
+}
+
+model Emission {
+  id              String   @id @default(cuid())
+  userId          String
+  date            DateTime
+  category        String
+  amount          Float
+  unit            String
+  location        String
+  facility        String
+  supplier        String?
+  scope           String   // 1, 2, 3
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Report {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  date        DateTime
+  status      String   @default("draft") // draft, completed
+  format      String   // PDF, etc.
+  data        Json?    // report data
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

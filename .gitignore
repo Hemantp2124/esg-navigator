@@ -12,9 +12,25 @@ dist
 dist-ssr
 *.local
 
-# Next.js
-.next/
-out/
+# Next.js (in frontend/)
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+
+# Python (backend and workers)
+backend/__pycache__/
+workers/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Infrastructure
+infrastructure/.terraform/
+
+# Environment files
+.env
+.env.local
+.env.production
 
 # Editor directories and files
 .vscode/*

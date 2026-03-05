@@ -1,4 +1,5 @@
 import { AppLayout } from "@/components/layout/AppLayout";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import "./globals.css";
 
 export default function RootLayout({
@@ -9,7 +10,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppLayout>{children}</AppLayout>
+        <ErrorBoundary>
+          <AppLayout>{children}</AppLayout>
+        </ErrorBoundary>
       </body>
     </html>
   );
